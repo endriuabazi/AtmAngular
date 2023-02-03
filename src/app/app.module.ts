@@ -16,6 +16,7 @@ import { LoaderComponent } from './Screens/components/cart/loader/loader.compone
 import { CartComponent } from './Screens/components/cart/cart.component';
 import { ActionsComponent } from './Screens/actions/actions.component';
 import { NavComponent } from './components/nav/nav.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { NavComponent } from './components/nav/nav.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot()
     
        
     

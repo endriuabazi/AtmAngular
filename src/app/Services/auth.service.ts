@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toastr: ToastrService,private router: Router) { }
   private baseUrl = `${environment.backendUrl}`;
   
   login(username: string, password: string){
@@ -31,17 +33,21 @@ export class AuthService {
       if (response.status === 200) {
         console.log(response);
         console.log(response.json());
+        this.toastr.success("Login successfully");
+        this.router.navigate(['/home',username]);
+       
         return true;
 
       } else {
         console.log("Error");
-        alert("Error");
+        this.toastr.error("Incorrect username or password");
   return false;
       }
     })
 
     .catch((error) => {
       console.error(error);
+      this.toastr.error("Incorrect username or password");
       return false;
     });
   }

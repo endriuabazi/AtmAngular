@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/Services/auth.service';
 
 
@@ -16,7 +17,7 @@ export class LoginComponent  implements OnInit{
   loginSuccesFlag = false;
   hide = true;
 
-  constructor(private authService: AuthService,private router: Router, private userFB: FormBuilder) {
+  constructor(private authService: AuthService,private router: Router, private userFB: FormBuilder,private toastr: ToastrService) {
   
   }
   
@@ -41,35 +42,6 @@ export class LoginComponent  implements OnInit{
     });
 }
 
-
-
-  // onSubmit() {
-  //   const controls = this.myForm.controls;
-  //   const username = this.myForm.controls['username'].value.trim();
-  //   const passw = this.myForm.controls['password'].value.trim();
-  //   if (this.myForm.invalid) {
-  //         Object.keys(controls).forEach((controlName) =>
-  //             controls[controlName].markAsTouched()
-  //         );
-  //         this.hasFormErrors = true;
-  //         return;
-  //     }
-  //   this.authService.login(username, passw).subscribe(
-  //       (data) => {
-  //         console.log(typeof(data));
-  //         console.log(data);
-  //         if (data == 'Login succesfull!') {
-  //           this.router.navigate(['/home',username]);
-  //       }
-  //       else {
-          
-  //                 console.log("Error");
-  //                 this.openDialog();
-  //               }
-  //       }
-  //     );
-  // }
-
  
 
 
@@ -91,17 +63,19 @@ export class LoginComponent  implements OnInit{
         if (response.status === 200) {
           console.log(response);
           console.log(response.json());
-  
+          this.toastr.success("Login successfully");
           this.router.navigate(['/home',username]);
+        
         } else {
           console.log("Error");
-          alert("Error");
+          this.toastr.error("Incorrect username or password");
        
         }
       })
   
       .catch((error) => {
         console.error(error);
+        this.toastr.error("Incorrect username or password");
       });
   };
 

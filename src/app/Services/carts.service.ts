@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartsService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private toastr: ToastrService) { }
   private baseUrl = `${environment.backendUrl}`;
   
 
@@ -28,14 +29,13 @@ withdraw(username: string , amount: number){
     }
   ) .then((response) => {
     if (response.status === 200) {
-      console.log(response);
-      console.log(response.json());
-      alert("Transaction completed successfully");
+    
+   this.toastr.success("Transaction completed successfully");
       return true;
 
     } else {
       console.log("Error");
-      alert("Error");
+      this.toastr.error("Incorrect Transation");
 return false;
     }
   })
@@ -61,14 +61,12 @@ return false;
       }
     ) .then((response) => {
       if (response.status === 200) {
-        console.log(response);
-        console.log(response.json());
-        alert("Transaction completed successfully");
+        this.toastr.success("Transaction completed successfully");
         return true;
   
       } else {
         console.log("Error");
-        alert("Error");
+        this.toastr.error("Incorrect Transation");
   return false;
       }
     })
