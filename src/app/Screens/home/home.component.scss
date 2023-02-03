@@ -1,0 +1,45 @@
+
+@import '../../../Variables.scss';
+
+    p{
+text-align: center;
+font-size: larger;
+
+
+    }
+    .afrimi{
+
+        padding: 25px;
+    .bobi{
+      
+background-color:$lightGrey;
+border-radius: 28px;
+border-width: 110px;
+padding: 65px;
+
+
+
+    .carts{
+
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 1rem;
+
+    
+.cart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+}
+}
+
+ 
+ .card:hover{
+    background-color: $blue;
+   
+}
+}
+}

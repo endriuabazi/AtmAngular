@@ -1,0 +1,59 @@
+
+<div class="login-container" >
+    <div class="login-body-container">
+    <div class="login-header">
+      <p class="login-title">
+         Register
+      </p>
+  </div>
+  <form [formGroup]="myForm" class="forma">
+    <mat-form-field appearance="outline" class="bisha" hideRequiredMarker>
+      <mat-label for="username">Username:</mat-label>
+      <input matInput type="text"  formControlName="username" placeholder="Username"  autocomplete="off" >
+      <mat-error *ngIf="myForm.controls['username'].invalid">
+      Incorrect username
+    </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="bisha" hideRequiredMarker>
+      <mat-label for="name">Name:</mat-label>
+      <input matInput type="text"  formControlName="name" placeholder="Name"  autocomplete="off" >
+      <mat-error *ngIf="myForm.controls['name'].invalid">
+      Name cannot be empty
+    </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="bisha" hideRequiredMarker>
+      <mat-label for="surname">Surname:</mat-label>
+      <input matInput type="text"  formControlName="surname" placeholder="Surname"  autocomplete="off" >
+      <mat-error *ngIf="myForm.controls['surname'].invalid">
+      Incorrect username
+    </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="bisha" hideRequiredMarker>
+      <mat-label for="email">Email:</mat-label>
+      <input matInput type="email"  formControlName="username" placeholder="Username"  autocomplete="off" >
+      <mat-error *ngIf="myForm.controls['email'].invalid">
+      Incorrect email
+    </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="bisha" hideRequiredMarker>
+        <mat-label for="age">Age:</mat-label>
+        <input matInput type="number"  formControlName="age" placeholder="Age"  autocomplete="off" >
+        <mat-error *ngIf="myForm.controls['age'].invalid">
+        You must be over 18 years old
+      </mat-error>
+      </mat-form-field>
+    <mat-form-field appearance="outline"  class="bisha">
+      <mat-label for="password">Password:</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'"  formControlName="password" placeholder="Password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="myForm.controls['password'].invalid">
+        Incorrect password
+      </mat-error>
+    </mat-form-field>
+   <p>Already have an account? <a routerLink="/login">Sign in</a></p>
+      <button (click)="onSubmit()" [disabled]="!myForm.valid" class="button button-full" >Register</button>
+    </form>
+    </div>
+  </div>

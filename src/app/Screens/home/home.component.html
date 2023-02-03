@@ -1,0 +1,33 @@
+
+<br>
+<div class="home">
+    <p style="font-size: 35px;">Hello {{username}}</p>
+   <app-nav></app-nav>
+</div>
+<br>
+    <div class="afrimi">
+    <div class=bobi >
+    <br>
+    <p style="font-size: 20px;">Your accounts:</p>
+    <div class="carts">
+    <div *ngFor="let cart of carts">
+    <mat-card  (click)="goToActions(cart.name)"> 
+
+      <mat-card-content class="card" >
+        <div class="cart" >
+    
+          <img src="../../../assets/raiffeisen.png" style="width: 20%;" alt="">
+          <p><b> Cart Name: </b>{{cart.name}}</p>
+          
+          
+          </div>
+      </mat-card-content>
+    </mat-card>
+
+
+  </div>
+</div>
+</div>
+
+</div>
+

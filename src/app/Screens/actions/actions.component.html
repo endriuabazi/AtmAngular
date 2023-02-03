@@ -1,0 +1,72 @@
+
+
+<br>
+<div class="home">
+    <p style="font-size: 35px;">{{cartName}}</p>
+    <br>
+    <p style="font-size: 35px;">Balance: {{balance}} leke</p>
+    <app-nav></app-nav>
+</div>
+<br>
+    <div class="afrimi">
+    <div class=bobi >
+    <br>
+    <p style="font-size: 25px;">Choose the menu:</p>
+
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+     
+        <mat-panel-description>
+          <p style="font-size: 20px;">Withdraw</p>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form [formGroup]="withdrawForm" class="forma">
+
+      <mat-form-field appearance="outline" class="bisha withdraw" hideRequiredMarker>
+        <mat-label for="Amount">Amount:</mat-label>
+        <input matInput type="number" formControlName="amount"   placeholder="Amount"  autocomplete="off" >
+        <mat-error *ngIf="withdrawForm.controls['amount'].invalid">
+        Incorrect Amount
+      </mat-error>
+      </mat-form-field>
+      <button (click)="withdraw()" class="button button-full">Withdraw</button>
+    </form>
+    </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+     
+        <mat-panel-description>
+          <p style="font-size: 20px;">Deposit</p>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <form [formGroup]="depositForm" class="forma">
+
+        <mat-form-field appearance="outline" class="bisha" hideRequiredMarker>
+          <mat-label for="Amount">Amount:</mat-label>
+          <input matInput type="number" formControlName="amount"   placeholder="Amount"  autocomplete="off" >
+          <mat-error *ngIf="depositForm.controls['amount'].invalid">
+            Incorrect Amount
+          </mat-error>
+        </mat-form-field>
+        <button (click)="deposit()" class="button button-full">Deposit</button>
+      </form>
+    </mat-expansion-panel>
+    <br>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+     
+        <mat-panel-description>
+          <p style="font-size: 20px;">Send</p>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <label for="">Amount</label>
+      <input type="text">
+      <button>Send</button>
+    </mat-expansion-panel>
+
+   
+</div>
+
+</div>
+

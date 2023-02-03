@@ -1,0 +1,24 @@
+<div class="nav">
+   
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" >
+       <div class="menuja">
+         <button mat-menu-item>
+        <span class="material-icons">password</span>
+        <span>Change Password</span>
+      </button>
+    </div>
+       
+          <button mat-menu-item>
+            <span class='material-icons'>account_circle</span>
+            <span>Edit Profile</span>
+          </button>
+          <button mat-menu-item (click)="logout()"  class="button buton-bisha" >
+            <span class="material-icons">logout</span>
+            <span>Logout</span>
+        </button>
+
+      </mat-menu>
+</div>
