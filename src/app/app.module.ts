@@ -31,8 +31,6 @@ import { ToastrModule } from 'ngx-toastr';
     CartComponent,
     ActionsComponent,
     NavComponent,
-  
-    
   ],
   imports: [
     BrowserModule,
@@ -42,12 +40,9 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
-    
-       
-    
+    ToastrModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

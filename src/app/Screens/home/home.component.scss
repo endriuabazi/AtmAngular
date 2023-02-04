@@ -1,5 +1,17 @@
 
 @import '../../../Variables.scss';
+@keyframes moveRight {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(100px);
+    }
+  }
+  
+  .animate {
+    animation: moveRight 4s linear infinite;
+  }
 
     p{
 text-align: center;

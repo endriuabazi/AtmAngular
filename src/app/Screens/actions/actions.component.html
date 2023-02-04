@@ -4,13 +4,14 @@
 <div class="home">
     <p style="font-size: 35px;">{{cartName}}</p>
     <br>
-    <p style="font-size: 35px;">Balance: {{balance}} leke</p>
+   
     <app-nav></app-nav>
 </div>
 <br>
     <div class="afrimi">
     <div class=bobi >
     <br>
+    <p class="balance">Balance: {{balance}} {{currency}}</p>
     <p style="font-size: 25px;">Choose the menu:</p>
 
     <mat-expansion-panel hideToggle>
@@ -20,6 +21,7 @@
           <p style="font-size: 20px;">Withdraw</p>
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <div class="fromdhefoto">
       <form [formGroup]="withdrawForm" class="forma">
 
       <mat-form-field appearance="outline" class="bisha withdraw" hideRequiredMarker>
@@ -31,6 +33,13 @@
       </mat-form-field>
       <button (click)="withdraw()" class="button button-full">Withdraw</button>
     </form>
+    <p style="padding: 2%">
+      <b>
+    Please make sure to enter a valid amount for withdrawal. <br>
+    The amount should be greater than 0 and not exceed your available balance. <br>
+    Thank you for your understanding.</b></p>
+    <img src="../../../assets/digibyte-dgb.gif" alt="">
+  </div>
     </mat-expansion-panel>
     <br>
     <mat-expansion-panel hideToggle>
@@ -40,6 +49,7 @@
           <p style="font-size: 20px;">Deposit</p>
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <div class="fromdhefoto">
       <form [formGroup]="depositForm" class="forma">
 
         <mat-form-field appearance="outline" class="bisha" hideRequiredMarker>
@@ -51,6 +61,13 @@
         </mat-form-field>
         <button (click)="deposit()" class="button button-full">Deposit</button>
       </form>
+      <p style="padding: 2%">
+        <b>
+      Please make sure to enter a valid amount for  your deposit. <br>
+      The amount should be greater than 0. <br>
+      Thank you for your understanding.</b></p>
+      <img src="../../../assets/deposit.jpg" alt="">
+      </div>
     </mat-expansion-panel>
     <br>
     <mat-expansion-panel hideToggle>
@@ -67,6 +84,7 @@
 
    
 </div>
+
 
 </div>
 

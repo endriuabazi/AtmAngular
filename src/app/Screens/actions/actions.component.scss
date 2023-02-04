@@ -7,6 +7,13 @@ font-size: larger;
 
 
 }
+.balance{
+    font-size: 28px;
+    display: flex;
+    flex-direction: row-reverse;
+    color: $green;
+
+}
 .afrimi{
 
     padding: 25px;
@@ -17,7 +24,10 @@ border-radius: 28px;
 border-width: 110px;
 padding: 65px;
 
-
+.fromdhefoto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 .forma {
     display: flex;
     flex-direction: column;
@@ -32,6 +42,7 @@ padding: 65px;
         ::placeholder {
             color: $matLabelGray;
         }
+    }
       
         mat-error {
             width: 100%;

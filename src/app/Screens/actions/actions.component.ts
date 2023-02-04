@@ -14,6 +14,7 @@ interface Lista {
 })
 export class ActionsComponent implements OnInit {
   cartName: any;
+  currency: any;
   panelOpenState = false;
   withdrawForm: FormGroup|any;
   depositForm: FormGroup|any;
@@ -62,7 +63,13 @@ export class ActionsComponent implements OnInit {
     const amount = this.withdrawForm.controls['amount'].value;
 this.cartService.withdraw(this.cartName, amount);
 
-this.router.navigate(['/actions',this.cartName]);
+this.cartService.getCartByName(this.cartName).subscribe((data:any) => {
+
+  this.balance = data.balance;
+  this.currency = data.currency;
+  
+      });
+
 
   }
 
@@ -77,6 +84,7 @@ this.getBalance();
     this.cartService.getCartByName(this.cartName).subscribe((data:any) => {
 
       this.balance = data.balance;
+      this.currency = data.currency;
       
           });
   }
