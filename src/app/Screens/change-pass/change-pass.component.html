@@ -1,1 +1,41 @@
-<p>change-pass works!</p>
+<body class="auth">
+  
+
+    <div class="login-container" >
+      <div class="login-body-container">
+      <div class="login-header">
+        <img src="../../../assets/07d0629ee68494b02936f5fbe6f0c9a0.png" alt="">
+        <br><br>
+        <p class="login-title">
+           Change Password
+        </p>
+    </div>
+    
+    <form [formGroup]="myForm" class="forma">
+    
+      <mat-form-field appearance="outline"  class="bisha">
+        <mat-label for="password">New Password:</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="newpass" placeholder="New Password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="myForm.controls['newpass'].invalid">
+           Password cannot be empty.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline"  class="bisha">
+        <mat-label for="password">Repeat Password:</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'"  formControlName="resetpass" placeholder="Repeat Password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="myForm.controls['resetpass'].invalid">
+          Incorrect password
+        </mat-error>
+      </mat-form-field>
+      <p>Changed your mind? <a routerLink="/home">Go back</a></p>
+        <button (click)="onSubmit()" [disabled]="!myForm.valid" class="button button-full" >Save</button>
+      </form>
+      </div>
+    </div>
+    </body>

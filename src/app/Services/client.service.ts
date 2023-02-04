@@ -19,7 +19,7 @@ export class ClientService {
     return this.http.get(`${this.baseUrl}/api/Client/GetClientByUsername?username=${username}`);
     }
 
-  // api/Client/editProfile?username=buci
+
 editProfile(username: string,data:any){
 
   fetch(`${this.baseUrl}/api/Client/editProfile?username=${username}`, {
@@ -48,4 +48,33 @@ editProfile(username: string,data:any){
     });
 
 }
+
+
+changepass(username: string, password: string,resetpassword: string){
+
+
+    fetch(`${this.baseUrl}/api/Client/changePass?username=${username}&newPassword=${password}&resetPassword=${resetpassword}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+  
+    })
+      .then(response => {
+        if (response.status === 200) {
+          this.toastr.success('Password changed successfully!');
+          this.router.navigate(['']);
+          return response.json();
+        } else {
+          this.toastr.error("Password change failed.");
+          throw new Error('Something went wrong');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+  
 }
+
