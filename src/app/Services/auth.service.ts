@@ -3,53 +3,81 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Client } from '../Interfaces/client';
+import { Observable } from 'rxjs';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private toastr: ToastrService,private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
   private baseUrl = `${environment.backendUrl}`;
-  
-  login(username: string, password: string){
-    const headers = new HttpHeaders({ Accept: 'application/json','Content-Type': 'application/json' });
 
-    const loginUrl = `${this.baseUrl}/api/Client/login?username=${username}&password=${password}`;
-    return this.http.post(loginUrl, {}, {headers: { Accept: 'application/json','Content-Type': 'application/json'}});
-  }
-
-
-  signin(username: string, password: string){
-
-     fetch(
+  signin(username: string, password: string) {
+    fetch(
       `${this.baseUrl}/api/Client/login?username=${username}&password=${password}`,
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
         },
       }
-    ) .then((response) => {
-      if (response.status === 200) {
-        console.log(response);
-        console.log(response.json());
-        this.toastr.success("Login successfully");
-        this.router.navigate(['/home',username]);
-       
-        return true;
+    )
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response);
+          console.log(response.json());
+          this.toastr.success('Login successfully');
+          localStorage.setItem('username', username);
+          localStorage.setItem('isLoggedIn', 'true');
 
-      } else {
-        console.log("Error");
-        this.toastr.error("Incorrect username or password");
-  return false;
-      }
-    })
+          this.router.navigate(['/home', username]);
+        } else {
+          console.log('Error');
+          this.toastr.error('Incorrect username or password');
+        }
+      })
 
-    .catch((error) => {
-      console.error(error);
-      this.toastr.error("Incorrect username or password");
-      return false;
-    });
+      .catch((error) => {
+        console.error(error);
+        this.toastr.error('Incorrect username or password');
+      });
   }
-}
 
+  signup(data:any){
+
+    // api/Client/PostClient
+
+
+    fetch(`${this.baseUrl}/api/Client/PostClient`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json', 
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => {
+        if (response.status === 201) {
+          this.toastr.success('Registered successfully');
+          return response.json();
+        } else {
+        
+          throw new Error('Something went wrong');
+          
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        this.toastr.error("Username already taken");
+      });
+
+  }
+
+
+
+}

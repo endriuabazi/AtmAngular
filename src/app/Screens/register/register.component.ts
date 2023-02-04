@@ -16,7 +16,6 @@ export class RegisterComponent {
   hide = true;
   constructor(
     private authService: AuthService,
-    private router: Router,
     private userFB: FormBuilder,
     public dialog: MatDialog
   ) {}
@@ -28,7 +27,8 @@ export class RegisterComponent {
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
 
-      email: ['', [Validators.required]],
+      email: ['', [Validators.required, , Validators.email]],
+      phone: ['', [Validators.required]],
 
       age: ['', [Validators.required]],
 
@@ -37,32 +37,15 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    const username = this.myForm.controls['username'].value.trim();
-    const passw = this.myForm.controls['password'].value.trim();
-    return fetch(
-      `https://localhost:7018/api/Client/login?username=${username}&password=${passw}`,
-      {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-      }
-    )
-      .then((response) => {
-        if (response.status === 200) {
-          console.log(response);
-          console.log(response.json());
+    const data = {
+      username: this.myForm.value.username,
+      name: this.myForm.value.name,
+      surname: this.myForm.value.surname,
+      email: this.myForm.value.email,
+      age: this.myForm.value.age,
+      password: this.myForm.value.password,
+    };
 
-          this.router.navigate(['/home', username]);
-        } else {
-          console.log('Error');
-          alert('Error');
-        }
-      })
-
-      .catch((error) => {
-        console.error(error);
-      });
+    this.authService.signup(data);
   }
 }

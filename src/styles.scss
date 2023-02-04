@@ -4,6 +4,11 @@
 // Mobile media queries
 // BEGIN: Temporary account stepper container
 // TODO: Remove
+a{
+text-decoration: none;
+color: $blue;
+
+}
 .temporary-account-stepper-container {
     display: flex;
     flex-direction: column;
@@ -31,7 +36,12 @@ body {
     background-color: $lightGray;
     font-family: 'Inter';
 }
+.auth{
+    background-color: $blue;
+    font-family: 'Inter';
 
+
+}
 .button {
     text-align: center;
     cursor: pointer;

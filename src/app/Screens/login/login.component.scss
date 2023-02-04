@@ -11,6 +11,9 @@
         justify-self: center;
         align-self: center;
         gap: 0;
+        background-color: $lightGrey;
+    border-radius: 15px;
+    padding: 63px;
     .login-header {
         width: 100%;
         display: block;
